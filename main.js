@@ -38,8 +38,8 @@ function obtenerVelocidad() {
             },
             {
                 enableHighAccuracy: true,
-                maximumAge: 1000,
-                timeout: 100
+                maximumAge: 0,
+                timeout: 5000
             }
         );
     } else {
