@@ -12,12 +12,13 @@ function enableOrientation() {
             .then(permissionState => {
                 if (permissionState === 'granted') {
                     window.addEventListener("deviceorientation", handleOrientation);
+                    navigator.geolocation.watchPosition(e => div.innerHTML = `${e.coords.speed} m/s`, e => console.log(e));
                 }
             })
             .catch(console.error);
     } else {
         window.addEventListener("deviceorientation", handleOrientation);
-        navigator.geolocation.getCurrentPosition(e => div.innerHTML = `${e.coords.speed} m/s`, e => console.log(e));
+        navigator.geolocation.watchPosition(e => div.innerHTML = `${e.coords.speed} m/s`, e => console.log(e));
     }
 }
 
