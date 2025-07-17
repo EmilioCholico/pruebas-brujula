@@ -25,20 +25,6 @@ function handleOrientation(e) {
     let declinacion = 8.3;
     let norteVerdadero = (gradosMagneticos - declinacion + 360) % 360;
     brujula.style.transform = `rotate(${360 - norteVerdadero}deg)`;
-    // navigator.geolocation.getCurrentPosition(e => div.innerHTML = `${e.coords.speed}`, e => console.log(e));
+    navigator.geolocation.getCurrentPosition(e => div.innerHTML = `${e.coords.speed} m/s`, e => console.log(e));
 }
 
-function obtenerVelocidad() {
-    navigator.geolocation.getCurrentPosition(
-        posicion => {
-            const velocidad = posicion.coords.speed;
-            div.innerHTML = `Velocidad: ${velocidad !== null ? velocidad.toFixed(2) + " m/s" : "No disponible"}`;
-        },
-        error => {
-            div.innerHTML = `Error al obtener velocidad: ${error.message}`;
-        },
-        {
-            enableHighAccuracy: true
-        }
-    );
-}
